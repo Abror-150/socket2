@@ -17,7 +17,7 @@ export class UserService {
         where: { userName: data.userName },
       });
       if (user) {
-        throw new Error('user already exists');
+        throw new NotFoundException('user already exists');
       }
       let hash = bcrypt.hashSync(data.password, 10);
       let newUser = await this.prisma.user.create({

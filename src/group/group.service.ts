@@ -2,6 +2,8 @@ import { Injectable } from '@nestjs/common';
 import { CreateGroupDto } from './dto/create-group.dto';
 import { UpdateGroupDto } from './dto/update-group.dto';
 import { PrismaService } from 'src/prisma/prisma.service';
+import { groupJoin } from './dto/create-groupJoin';
+import { groupMessage } from './dto/create-groupMessage';
 
 @Injectable()
 export class GroupService {
@@ -14,7 +16,7 @@ export class GroupService {
       return error;
     }
   }
-  async joinGr(data: { groupId: string; userId: string }) {
+  async joinGr(data: groupJoin) {
     try {
       let joined = await this.prisma.user.update({
         where: { id: data.userId },
@@ -35,7 +37,7 @@ export class GroupService {
       return error;
     }
   }
-  async messageCreate(data: any) {
+  async messageCreate(data: groupMessage) {
     try {
       let created = await this.prisma.groupMessage.create({ data });
       return created;

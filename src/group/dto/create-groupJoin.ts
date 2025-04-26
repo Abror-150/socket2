@@ -1,8 +1,8 @@
 import { ApiProperty } from '@nestjs/swagger';
 
-export class CreateGlobalDto {
+export class groupJoin {
   @ApiProperty()
-  fromId: string;
+  groupId: string;
   @ApiProperty()
-  text: string;
+  userId: string;
 }

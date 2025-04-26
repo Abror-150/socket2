@@ -14,6 +14,8 @@ import { CreateGroupDto } from './dto/create-group.dto';
 import { UpdateGroupDto } from './dto/update-group.dto';
 import { AuthGuard } from 'src/auth/auth.guard';
 import { PrismaModule } from 'src/prisma/prisma.module';
+import { groupJoin } from './dto/create-groupJoin';
+import { groupMessage } from './dto/create-groupMessage';
 
 @Controller('group')
 export class GroupController {
@@ -24,7 +26,7 @@ export class GroupController {
     return this.groupService.createGr(createGroupDto);
   }
   @Post('join')
-  joinedGr(@Body() data: any) {
+  joinedGr(@Body() data: groupJoin) {
     return this.groupService.joinGr(data);
   }
   @Get()
@@ -34,7 +36,7 @@ export class GroupController {
     return this.groupService.getGr(userId);
   }
   @Post('message')
-  grCreateMessage(@Body() data: any) {
+  grCreateMessage(@Body() data: groupMessage) {
     return this.groupService.messageCreate(data);
   }
   @Get('message/:groupId')

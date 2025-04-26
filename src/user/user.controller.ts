@@ -16,11 +16,11 @@ import { CreateUserLoginDto } from './dto/create-user.dtoLogin copy';
 export class UserController {
   constructor(private readonly userService: UserService) {}
 
-  @Post('/register')
+  @Post('register')
   register(@Body() createUserDto: CreateUserDto) {
     return this.userService.register(createUserDto);
   }
-  @Post('/login')
+  @Post('login')
   login(@Body() CreateUserLoginDto: CreateUserLoginDto) {
     return this.userService.login(CreateUserLoginDto);
   }
